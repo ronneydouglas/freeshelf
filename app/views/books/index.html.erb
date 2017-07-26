@@ -1,0 +1,24 @@
+<h1>Welcome to Freeshelf</h1>
+<p>Your guide to FREE programming books online</p>
+<%= link_to 'New book', new_book_path %>
+<table>
+   <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th>URL</th>
+   </tr>
+<% @books.each do |book| %>
+<tr>
+ <td> <%= book.book_title %> </td>
+ <td> <%= book.author %> </td>
+ <td> <%= book.description %> </td>
+ <td> <%= book.url %> </td>
+ <td>  <%= link_to 'Show', book %> </td>
+ <td>  <%= link_to 'Edit', edit_book_path(book) %> </td>
+ <td>  <%= link_to 'Destroy', book, method: :delete,data: { confirm: 'Are you sure?' } %> </td>
+ </tr>
+
+<% end %>
+
+</table>
