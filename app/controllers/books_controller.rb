@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
    before_action :find_book, only: [:show, :destroy, :update, :edit]
+   before_action :authorize, except: [:show, :index]
 
    def index
       @books = Book.all
@@ -14,7 +15,8 @@ class BooksController < ApplicationController
       if @book.save
          redirect_to books_path
       else
-        redirect_to new_book_path
+         flash ('Book not saved')
+         redirect_to new_book_path
       end
    end
 
